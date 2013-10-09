@@ -19,7 +19,7 @@ object IndexerObject extends Indexer with App {
   ElasticSearchFactory.init()
 
   println("initialization fo the FireBase Listener")
-  val usersRef = new Firebase("https://randl-backend.firebaseio.com/");
+  val usersRef = new Firebase(database);
   usersRef.addChildEventListener(new ChildEventListener() {
     @Override
     def onChildAdded(snapshot: DataSnapshot, previousChildName: String) {
