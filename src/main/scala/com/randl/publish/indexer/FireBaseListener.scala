@@ -2,7 +2,6 @@ package com.randl.publish.indexer
 
 import com.firebase.client.{Firebase, ChildEventListener, DataSnapshot}
 import com.randl.core.servicelib.elasticsearch.ElasticSearchFactory
-import java.lang.Boolean
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,7 +24,7 @@ object IndexerObject extends Indexer with App {
     def onChildAdded(snapshot: DataSnapshot, previousChildName: String) {
       println("item update")
       val hashMap = new java.util.HashMap[String, AnyRef]()
-      hashMap.put("index", "")
+      hashMap.put("index", null)
       usersRef.child(snapshot.getName).updateChildren(hashMap)
       indexer(snapshot.getValue)
     }
