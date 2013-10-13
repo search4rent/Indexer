@@ -13,7 +13,7 @@ import com.randl.core.servicelib.elasticsearch.ElasticSearchFactory
 object IndexerObject extends Indexer with App {
 
   val indexES = "rendl"
-  val typeES = "items"
+  val typeES = "item"
 
   ElasticSearchFactory.init()
 
@@ -23,9 +23,6 @@ object IndexerObject extends Indexer with App {
     @Override
     def onChildAdded(snapshot: DataSnapshot, previousChildName: String) {
       println("item update")
-      val hashMap = new java.util.HashMap[String, AnyRef]()
-      hashMap.put("index", null)
-      usersRef.child(snapshot.getName).updateChildren(hashMap)
       indexer(snapshot.getValue)
     }
 
