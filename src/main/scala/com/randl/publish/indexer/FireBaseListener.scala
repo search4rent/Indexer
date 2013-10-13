@@ -23,22 +23,16 @@ object IndexerObject extends Indexer with App {
   usersRef.addChildEventListener(new ChildEventListener() {
     @Override
     def onChildAdded(snapshot: DataSnapshot, previousChildName: String) {
-      if (indexer(snapshot.getValue)) {
-        println("item added: " + snapshot.getName)
-        val hashMap = new java.util.HashMap[String, AnyRef]()
-        hashMap.put("index", new Boolean(true))
-        usersRef.child(snapshot.getName).updateChildren(hashMap)
-      }
+      val hashMap = new java.util.HashMap[String, AnyRef]()
+      hashMap.put("index", new Boolean(true))
+      usersRef.child(snapshot.getName).updateChildren(hashMap)
+      indexer(snapshot.getValue)
     }
 
     @Override
     def onChildChanged(snapshot: DataSnapshot, previousChildName: String) {
-      if (indexer(snapshot.getValue)) {
-        println("item update: " + snapshot.getName)
-        val hashMap = new java.util.HashMap[String, AnyRef]()
-        hashMap.put("index", new Boolean(true))
-        usersRef.child(snapshot.getName).updateChildren(hashMap)
-      }
+      println("item update")
+      indexer(snapshot.getValue)
     }
 
     @Override
