@@ -22,7 +22,7 @@ object IndexerObject extends Indexer with App {
   usersRef.addChildEventListener(new ChildEventListener() {
     @Override
     def onChildAdded(snapshot: DataSnapshot, previousChildName: String) {
-      println("item update")
+      println("item added")
       indexer(snapshot.getValue)
     }
 
