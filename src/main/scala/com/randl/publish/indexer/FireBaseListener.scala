@@ -12,7 +12,7 @@ import com.randl.core.servicelib.elasticsearch.ElasticSearchFactory
  */
 object IndexerObject extends Indexer with App {
 
-  val indexES = "rendl"
+  val indexES = "test6"
   val typeES = "item"
 
   ElasticSearchFactory.init()

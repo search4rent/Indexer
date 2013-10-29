@@ -24,7 +24,40 @@
             <artifactId>firebase-client</artifactId>
             <version>${firebase.version}</version>
         </dependency>
+        <!--RabbitMQ Dependencies -->
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>2.8.1</version>
+        </dependency>
+
+        <!--Rest Elasticsearch client dependency-->
+        <dependency>
+            <groupId>io.searchbox</groupId>
+            <artifactId>jest</artifactId>
+            <version>0.0.5</version>
+        </dependency>
+
     </dependencies>
+    <!-- Neo4j Repositories-->
+    <repositories>
+        <repository>
+            <id>fakod-snapshots</id>
+            <url>https://raw.github.com/FaKod/fakod-mvn-repo/master/snapshots</url>
+        </repository>
+        <repository>
+            <id>fakod-releases</id>
+            <url>https://raw.github.com/FaKod/fakod-mvn-repo/master/releases</url>
+        </repository>
+
+        <!--Rest Elasticsearch client repositories -->
+        <repository>
+            <id>sonatype</id>
+            <name>Sonatype Groups</name>
+            <url>https://oss.sonatype.org/content/groups/public/</url>
+        </repository>
+    </repositories>
+
 
     <build>
 
@@ -44,8 +77,10 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>make-assembly</id> <!-- this is used for inheritance merges -->
-                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <id>make-assembly</id>
+                        <!-- this is used for inheritance merges -->
+                        <phase>package</phase>
+                        <!-- bind to the packaging phase -->
                         <goals>
                             <goal>single</goal>
                         </goals>
